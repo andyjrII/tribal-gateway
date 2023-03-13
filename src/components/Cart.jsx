@@ -2,27 +2,30 @@ import React, { useContext } from 'react'
 import { CartContext } from './Form'
 
 const Cart = () => {
-    const {subtotal} = useContext(CartContext);
+    const {departureEscort, transportation, officer, armed, tshirts} = useContext(CartContext);
     const voa = 700;
     const vat = 10;
-    const discount = 15;
+    const discount = 30;
+    let security = officer + armed;
+    let subtotal = voa + departureEscort + transportation + security + tshirts + vat;
+    let total = subtotal - discount;
 
   return (
-    <div className='cart'>
-        <h1>Cart</h1>
+    <div className='cart bg-dark'>
+        <h6>Cart</h6>
         VOA: <span>${voa}</span><br/>
-        Departure Escort: <span>$</span><br/>
-        Transportation: <span>$</span><br/>
-        Security Total: <span>$</span><br/>
-        TShirts: <span>$</span><br/>
+        Departure Escort: <span>${departureEscort}</span><br/>
+        Transportation: <span>${transportation}</span><br/>
+        Security Total: <span>${security}</span><br/>
+        TShirts: <span>${tshirts}</span><br/>
         VAT/TAX: <span>${vat}</span>
         <hr/>
-        <h3>Subtotal: <span>${subtotal - vat}</span></h3>
+        Subtotal: <span>${subtotal}</span>
         <hr/>
-        Discount Code: <span>jd383gowhwwo</span><br/>
+        Discount Code: <span>jd383gowh</span><br/>
         Discount Amount: <span>${discount}</span>
         <hr/>
-        <h2>Total: <span>${subtotal - vat + discount}</span></h2>
+        Total: <span>${total}</span>
     </div>
   )
 }
