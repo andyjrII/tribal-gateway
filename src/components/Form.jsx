@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import Cart from './Cart';
 
 export const CartContext = createContext();
@@ -45,6 +45,10 @@ const Form = () => {
     setDateDays(dayDifference);
     return dayDifference;
   }
+
+  useEffect(() => {
+    getDays(arrivalDate, departureDate);
+  }, [arrivalDate, departureDate])
 
   const handleCheck = (data) => {
     if(data === 'house') {
@@ -202,7 +206,7 @@ const Form = () => {
   const handleShirtTitleChange = (event) => {
     shirtTitle = event.target.value;
   }
-
+  
   return (
     <CartContext.Provider value={{departureEscort, transportation, officer, armed, dateDays, tshirts}}>
       <div className="py-5 text-center">
@@ -246,7 +250,7 @@ const Form = () => {
               <div className="col-sm-3">
                 <label className="form-label">Date of Arrival</label>
                 <input type="date" className="form-control" value = {arrivalDate}
-                  onChange={e => {setArrivalDate(e.target.value); getDays(arrivalDate, departureDate)}} required
+                  onChange={e => setArrivalDate(e.target.value)} required
                 />
                 <div className="invalid-feedback">
                   Your username is required.
@@ -280,7 +284,7 @@ const Form = () => {
                 <div className="col-sm-3">
                   <label className="form-label">Date of Departure</label>
                   <input type="date" className="form-control" value={departureDate}
-                    onChange={e => {setDepartureDate(e.target.value); getDays(arrivalDate, departureDate)}} required
+                    onChange={e => setDepartureDate(e.target.value)} required
                   />
                   <div className="invalid-feedback">
                     Please enter the Date of your Departure.

@@ -61,3 +61,7 @@ button a {
 footer {
   height: 50px;
 }
+
+label {
+  text-align: justify;
+}
