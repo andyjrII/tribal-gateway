@@ -1,35 +1,45 @@
 import './App.css';
 import Form from './components/Form';
-import Image from './assets/nav-img.png';
+import Image from './assets/tribal-ctn.jpg';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <>
-        <nav className="container">
-          <div className="row">
-            <div className="row g-3 shadow p-3 mb-5 bg-body-tertiary rounded bg-dark">
-              <div className="col-md-3">
-                <img src={Image} alt="Logo" width="150" height="120"/>
-              </div>
-              <div className='col-md-9 title'>
-                <h1>TRIBAL GATEWAY</h1>
-                <h3>AIRPORT CONCEIGE SERVICES</h3>
-              </div>
-            </div>
-          </div>
-         </nav>
-         <div>
-          <div className='center-div shadow p-3 mb-5 bg-body-tertiary rounded'>
-            <h3>Hello from Nigeria!</h3>
-            <p>So excited that you will be visiting Nigeria soon! Our goal is to make your journey as smooth as 
-                possible.
-            </p>
+    <>
+    <header>
+      <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div className="container-fluid">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarCollapse">
+            <ul className="navbar-nav me-auto mb-2 mb-md-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link">Contact Us</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <Form/>
-      </>
-    </div>
+      </nav>
+    </header>
+    <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img className="bd-placeholder-img" src={Image} alt='Tribal CTN' width="100%" height="550"/>
+          </div>
+        </div>
+      </div>
+    <main className='container'> 
+      <Form/>
+    </main>
+    <Footer/>
+  </>
   );
 }
 
